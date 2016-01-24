@@ -13,6 +13,8 @@ class SecurityController extends Controller
 
     public function loginAction() {
 
+        $this->setTitle('Login');
+
         $error = '';
 
         $isAlreadyLogged = Session::has('logged_user');

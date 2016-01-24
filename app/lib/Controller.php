@@ -7,6 +7,8 @@ use App\Project;
 class Controller
 {
 
+    protected $title;
+
     public function renderTemplate($templatePath, array $params = array()) {
         $templatePath = Project::getDir('app/views') . $templatePath;
 
@@ -22,5 +24,13 @@ class Controller
     public function redirectTo($url) {
         header('Location: ' . Project::getUrl($url));
         die();
+    }
+
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
     }
 }

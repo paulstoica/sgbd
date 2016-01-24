@@ -49,11 +49,40 @@ class EntityManager
 
     }
 
-    public function getAll($entityClassName) {
+    public function getAll($entityClassName, array $options = array()) {
 
         $db = Project::getDB();
 
         $sql = 'SELECT * FROM ' . $this->getTable($entityClassName);
+
+        if (isset($options['orderBy']) && is_string($options['orderBy'])) {
+            $sql .= ' ORDER BY ' . $options['orderBy'];
+
+            if (isset($options['order'])) {
+                switch ($options['order']) {
+                    case 'ASC':
+                    case 'asc':
+                        $sql .= ' ASC';
+                        break;
+                    case 'DESC':
+                    case 'desc':
+                        $sql .= ' DESC';
+                        break;
+                    default:
+                        $sql .= ' ASC';
+
+                }
+            }
+
+        }
+
+        if (isset($options['limit']) && is_int($options['limit']) && $options['limit'] > 0) {
+            $sql .= ' LIMIT ' . $options['limit'];
+        }
+
+        if (isset($options['offset']) && is_int($options['offset']) && $options['offset'] > 0) {
+            $sql .= ' OFFSET ' . $options['offset'];
+        }
 
         $statement = $db->prepare($sql);
 
@@ -65,7 +94,7 @@ class EntityManager
 
     }
 
-    public function getAllBy($entityClassName, array $criteria = array()) {
+    public function getAllBy($entityClassName, array $criteria = array(), array $options = array()) {
 
         if (empty($criteria)) {
             return $this->getAll();
@@ -77,6 +106,38 @@ class EntityManager
         $columnsValues = $this->prepareCriteriaValues($criteria);
 
         $sql = 'SELECT * FROM ' . $this->getTable($entityClassName) . ' WHERE ' . $columns;
+
+        if (isset($options['orderBy']) && is_string($options['orderBy'])) {
+            $sql .= ' ORDER BY ' . $options['orderBy'];
+
+            if (isset($options['order'])) {
+                switch ($options['order']) {
+                    case 'ASC':
+                    case 'asc':
+                        $sql .= ' ASC';
+                        break;
+                    case 'DESC':
+                    case 'desc':
+                        $sql .= ' DESC';
+                        break;
+                    default:
+                        $sql .= ' ASC';
+
+                }
+            }
+            else {
+                $sql .= ' ASC';
+            }
+
+        }
+
+        if (isset($options['limit']) && is_int($options['limit']) && $options['limit'] > 0) {
+            $sql .= ' LIMIT ' . $options['limit'];
+        }
+
+        if (isset($options['offset']) && is_int($options['offset']) && $options['offset'] > 0) {
+            $sql .= ' OFFSET ' . $options['offset'];
+        }
 
         $statement = $db->prepare($sql);
 

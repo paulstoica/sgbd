@@ -15,13 +15,13 @@ class Security
     public static function getLoggedUser() {
         $loggedUserId = Session::get('logged_user');
 
-        if (!$loggedUserId || !is_int($loggedUserId)) {
+        if (!$loggedUserId) {
             return null;
         }
 
         $em = Project::getEntityManager();
 
-        $user = $em->get('App\Entity\UserEntity', $loggedUserId);
+        $user = $em->get('App\Entity\UserEntity', intval($loggedUserId));
 
         return $user;
     }

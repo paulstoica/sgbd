@@ -3,7 +3,7 @@ namespace App\Entity;
 
 use App\Lib\EntityInterface;
 
-class BrandAutoEntity implements EntityInterface
+class ModelAutoEntity implements EntityInterface
 {
 
     protected $id;

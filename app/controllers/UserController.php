@@ -12,6 +12,8 @@ class UserController extends Controller
 
     public function registerAction() {
 
+        $this->setTitle('Register');
+
         $error = '';
 
         if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name'])) {
