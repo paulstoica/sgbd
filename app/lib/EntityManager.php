@@ -186,7 +186,7 @@ class EntityManager
                 $stm .= $value;
             }
 
-            if (count($values) - 1 > $i) {
+            if (count($values) - 1 >= $i) {
                 $stm .= ', ';
             }
 

@@ -6,6 +6,7 @@ use App\Project;
 
 class Controller
 {
+
     public function renderTemplate($templatePath, array $params = array()) {
         $templatePath = Project::getDir('app/views') . $templatePath;
 
@@ -16,5 +17,10 @@ class Controller
         }
 
         include $templatePath;
+    }
+
+    public function redirectTo($url) {
+        header('Location: ' . Project::getUrl($url));
+        die();
     }
 }

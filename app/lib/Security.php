@@ -55,7 +55,7 @@ class Security
 
     }
 
-    public static function isCorrectPasswordForUser($password, UserEntity $user) {
+    public static function checkPasswordForUser($password, UserEntity $user) {
 
         if ( hash_equals($user->getPassword(), crypt($password, $user->getPassword())) ) {
             return true;

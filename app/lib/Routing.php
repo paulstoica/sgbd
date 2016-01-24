@@ -28,8 +28,6 @@ class Routing
         $url = rtrim($_GET['url'], '/');
         $url = explode('/', $url);
 
-        print_r($url);
-
         if (!isset($url[0])) {
             $this->redirectToHome();
             return;
