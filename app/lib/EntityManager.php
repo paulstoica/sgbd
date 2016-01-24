@@ -205,7 +205,7 @@ class EntityManager
 
     public function delete(EntityInterface $entity) {
         $sql = 'DELETE FROM ' . $this->getTable(get_class($entity)) . ' WHERE id=:id';
-        pr($sql);
+
         $db = Project::getDB();
 
         $stm = $db->prepare($sql);
