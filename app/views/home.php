@@ -1,10 +1,9 @@
-<div class="page_container">
-    <?php $this->renderTemplate('global/header.php') ?>
+<?php $this->renderTemplate('global/head.php') ?>
 
-    <?php 
-        
-    
-    ?>
+
+<div class="page_container">
+
+    <?php $this->renderTemplate('global/header.php') ?>
     <div class="product_container">
         <div class="product_logo">
             Insert image here
