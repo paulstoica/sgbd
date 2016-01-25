@@ -64,3 +64,23 @@
     width: 100%;
     text-align: left;
 }
+.product-form{
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.control input{
+        width: 300px;
+        margin-bottom: 10px;
+}
+
+.control_description textarea{
+        width: 300px;
+        margin-bottom: 10px;
+        min-height: 150px;
+}
+.control select{
+    width: 250px;
+    margin-bottom: 10px;
+}

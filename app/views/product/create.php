@@ -18,7 +18,7 @@
                     <input type="text" name="name" value="" placeholder="Name">
                 </div>
 
-                <div class="control">
+                <div class="control_description">
                     <textarea name="description" value="" placeholder="Description"></textarea>
                 </div>
 
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="control">
-                    <select id="brand_select" name="brand" onchange="brandChanged()">
+                    Brand: <select id="brand_select" name="brand" onchange="brandChanged()">
                         <option value="">Select a auto brand...</option>
 
                         <?php foreach($brands as $brand): ?>
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="control">
-                    <select id="model_select"  name="model" disabled>
+                    Model: <select id="model_select"  name="model" disabled>
                         <option value="">Select a auto model...</option>
                     </select>
                 </div>
