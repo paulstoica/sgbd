@@ -41,12 +41,12 @@ class UserController extends Controller
                     ));
 
                     if (!$entity) {
-                        $error = 'Was an error during register, please try again.';
+                        $error = 'A fost o eroare in momentul inregistrari, te rugam incearca dinou.';
                     }
                 }
             }
             else {
-                $error = 'Please enter valid values.';
+                $error = 'Introdu valori valide.';
             }
         }
 

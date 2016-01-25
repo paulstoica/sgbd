@@ -75,10 +75,10 @@ class ProductController extends Controller
                 $product = Project::getEntityManager()->insert('App\Entity\ProductEntity', $data);
 
                 if (!$product) {
-                    $error = 'Was an error during product creation, please try again.';
+                    $error = 'A fost o eroare in momentul crearii produsului, te rugam incearca dinou.';
                 }
             } else {
-                $error = 'Name is required!';
+                $error = 'Numele este obligatoriu!';
             }
 
         }

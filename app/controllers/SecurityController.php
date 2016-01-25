@@ -38,14 +38,14 @@ class SecurityController extends Controller
                 }
 
                 if (!$user) {
-                    $error = 'This email is not valid.';
+                    $error = 'Email-ul nu este valid.';
                 }
 
                 if ($user && !Security::checkPasswordForUser($password, $user)) {
-                    $error = 'Password is not valid for this email, please try again.';
+                    $error = 'Parola nu este valida pentru acest email, te rugam incearca dinou.';
                 }
             } else {
-                $error = 'Please enter email and password.';
+                $error = 'Introdu te rog un email si o parola.';
             }
         }
         elseif ($isAlreadyLogged) {
