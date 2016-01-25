@@ -41,7 +41,7 @@
                         Stoc: <?php echo $product->getStock() ?>
                     </div>
                     <div class="product_price">
-                        Pret: <?php echo $product->getPrice() ?>
+                        Pret: <?php echo $product->getPrice() ?> lei
                     </div>
                     <div class="product_description">
                         Descriere: <?php echo $product->getDescription() ?>
