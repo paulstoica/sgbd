@@ -4,7 +4,7 @@
 <div class="page_container">
     <?php $this->renderTemplate('global/header.php') ?>
     <div class="login-form">
-        <h3>Login</h3>
+        <h3>Conectare</h3>
         <?php if(isset($error) && $error): ?>
             <div class="error">
                 <?php echo $error ?>
@@ -15,13 +15,13 @@
                 <input type="text" name="email" value="" placeholder="Email">
             </div>
             <div class="control">
-                <input type="password" name="password" value="" placeholder="Password">
+                <input type="password" name="password" value="" placeholder="Parola">
             </div>
-            <input type="submit" value="Login">
+            <input type="submit" value="Conectare">
         </form>
         <div class="register-block">
-            <span>Do you don't have an account?</span>
-            <a href="<?php echo\App\Project::getUrl('user/register') ?>">Create one.</a>
+            <span>Nu ai un cont?</span>
+            <a href="<?php echo\App\Project::getUrl('user/register') ?>">Inregistreaza-te</a>
         </div>
     </div>
 </div>

@@ -4,16 +4,33 @@
 <div class="page_container">
     <?php $this->renderTemplate('global/header.php') ?>
 
-    <h3>List Products</h3>
+    <h3>Lista produse</h3>
 
     <?php foreach ($products as $product): ?>
         <div class="product_container">
             <div class="product_logo">
-                <img width="200px" src="<?php echo \App\Project::getUrl('app/resources/images/') . 'default-product.jpg' ?>">
+
+                <?php $imgSrc = \App\Project::getUrl('app/resources/images/default-product.jpg') ?>
+
+                <?php
+                switch($product->getName()) {
+                    case 'Alternator':
+                        $imgSrc = \App\Project::getUrl('app/resources/images/products/alternator.jpg');
+                        break;
+                    case 'Bara spate':
+                        $imgSrc = \App\Project::getUrl('app/resources/images/products/bara-spate.jpg');
+                        break;
+                    case 'Bancheta':
+                        $imgSrc = \App\Project::getUrl('app/resources/images/products/bancheta-spate.jpg');
+                        break;
+                }
+                ?>
+
+                <img width="200px" src="<?php echo $imgSrc ?>">
             </div>
             <div class="product_info">
                 <div class="product_name">
-                    Name: <?php echo $product->getName() ?>
+                    Nume: <?php echo $product->getName() ?>
                 </div>
                 <div class="product_stock">
                     Stoc: <?php echo $product->getStock() ?>

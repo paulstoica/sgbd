@@ -6,7 +6,7 @@
     <?php if (\App\Lib\Security::isLoggedUser()) { ?>
 
         <div class="product-form">
-            <h3>Create Product</h3>
+            <h3>Creare Produs</h3>
             <?php if(isset($error) && $error): ?>
                 <div class="error">
                     <?php echo $error ?>
@@ -15,24 +15,24 @@
             <form action="<?php echo\App\Project::getUrl('product/create') ?>" method="post">
 
                 <div class="control">
-                    <input type="text" name="name" value="" placeholder="Name">
+                    <input type="text" name="name" value="" placeholder="Nume">
                 </div>
 
                 <div class="control_description">
-                    <textarea name="description" value="" placeholder="Description"></textarea>
+                    <textarea name="description" value="" placeholder="Descriere"></textarea>
                 </div>
 
                 <div class="control">
-                    <input type="text" name="stock" value="" placeholder="Stock">
+                    <input type="text" name="stock" value="" placeholder="Stoc">
                 </div>
 
                 <div class="control">
-                    <input type="text" name="price" value="" placeholder="Price">
+                    <input type="text" name="price" value="" placeholder="Pret">
                 </div>
 
                 <div class="control">
-                    Brand: <select id="brand_select" name="brand" onchange="brandChanged()">
-                        <option value="">Select a auto brand...</option>
+                    <select id="brand_select" name="brand" onchange="brandChanged()">
+                        <option value="">Selecteaza un brand auto...</option>
 
                         <?php foreach($brands as $brand): ?>
                             <option value="<?php echo $brand->getId() ?>"><?php echo $brand->getName() ?></option>
@@ -41,11 +41,11 @@
                 </div>
 
                 <div class="control">
-                    Model: <select id="model_select"  name="model" disabled>
-                        <option value="">Select a auto model...</option>
+                    <select id="model_select"  name="model" disabled>
+                        <option value="">Selecteaza un model auto...</option>
                     </select>
                 </div>
-                <input type="submit" value="Create">
+                <input type="submit" value="Creaza">
             </form>
             <script type="text/javascript">
                 var escapeHTML = function(unsafe) {
@@ -86,7 +86,7 @@
             </script>
         </div>
     <?php } else { ?>
-        <span>You need to be logged in to can add products.</span>
-        <a href="<?php echo\App\Project::getUrl('security/login') ?>">Login.</a>
+        <span>Trebuie sa fi conectat pentru a putea adauga produse.</span>
+        <a href="<?php echo\App\Project::getUrl('security/login') ?>">Conectare.</a>
     <?php } ?>
 </div>

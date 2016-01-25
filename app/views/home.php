@@ -4,66 +4,43 @@
 <div class="page_container">
 
     <?php $this->renderTemplate('global/header.php') ?>
-    <div class="product_container">
-        <div class="product_logo">
-            Insert image here
-        </div>
-        <div class="product_info">
-            <div class="product_name">
-                Nume: 
+    <?php foreach ($products as $product): ?>
+        <div class="product_container">
+            <div class="product_logo">
+
+                <?php $imgSrc = \App\Project::getUrl('app/resources/images/default-product.jpg') ?>
+
+                <?php
+                    switch($product->getName()) {
+                        case 'Alternator':
+                            $imgSrc = \App\Project::getUrl('app/resources/images/products/alternator.jpg');
+                            break;
+                        case 'Bara spate':
+                            $imgSrc = \App\Project::getUrl('app/resources/images/products/bara-spate.jpg');
+                            break;
+                        case 'Bancheta':
+                            $imgSrc = \App\Project::getUrl('app/resources/images/products/bancheta-spate.jpg');
+                            break;
+                    }
+                ?>
+
+                <img width="200px" src="<?php echo $imgSrc ?>">
             </div>
-            <div class="product_stock">
-                Stoc:
-            </div>
-            <div class="product_price">
-                Pret:
-            </div>
-            <div class="product_description">
-                Descriere: 
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="product_container">
-        <div class="product_logo">
-            Insert image here
-        </div>
-        <div class="product_info">
-            <div class="product_name">
-                Nume: 
-            </div>
-            <div class="product_stock">
-                Stoc:
-            </div>
-            <div class="product_price">
-                Pret:
-            </div>
-            <div class="product_description">
-                Descriere: 
-                
+            <div class="product_info">
+                <div class="product_name">
+                    Nume: <?php echo $product->getName() ?>
+                </div>
+                <div class="product_stock">
+                    Stoc: <?php echo $product->getStock() ?>
+                </div>
+                <div class="product_price">
+                    Pret: <?php echo $product->getPrice() ?>
+                </div>
+                <div class="product_description">
+                    Descriere: <?php echo $product->getDescription() ?>
+
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="product_container">
-        <div class="product_logo">
-            Insert image here
-        </div>
-        <div class="product_info">
-            <div class="product_name">
-                Nume: 
-            </div>
-            <div class="product_stock">
-                Stoc:
-            </div>
-            <div class="product_price">
-                Pret:
-            </div>
-            <div class="product_description">
-                Descriere: 
-                
-            </div>
-        </div>
-    </div>
+    <?php endforeach; ?>
 </div>

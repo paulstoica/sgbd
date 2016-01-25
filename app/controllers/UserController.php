@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function registerAction() {
 
-        $this->setTitle('Register');
+        $this->setTitle('Inregistrare - Auto Parts Supply');
 
         $error = '';
 
@@ -24,7 +24,7 @@ class UserController extends Controller
 
             if ($email && $name && $password && $repassword) {
                 if ($password != $repassword) {
-                    $error = 'Passwords are different.';
+                    $error = 'Parolele nu sunt egale.';
                 }
                 else {
                     $em = Project::getEntityManager();

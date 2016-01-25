@@ -13,7 +13,7 @@ class SecurityController extends Controller
 
     public function loginAction() {
 
-        $this->setTitle('Login');
+        $this->setTitle('Conectare - Auto Parts Supply');
 
         $error = '';
 

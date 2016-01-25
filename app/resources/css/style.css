@@ -80,7 +80,24 @@
         margin-bottom: 10px;
         min-height: 150px;
 }
-.control select{
+.control select {
     width: 250px;
     margin-bottom: 10px;
+}
+
+form.search-form input {
+    float: left;
+    width: 160px;
+}
+
+form.search-form button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    float: left;
+    height: 30px;
+    color: #888;
+}
+
+form.search-form button:hover {
+    color: #555;
 }

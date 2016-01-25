@@ -6,13 +6,14 @@ namespace App\Controller;
 use App\Lib\Controller;
 use App\Lib\Security;
 use App\Project;
+use App\Entity\ProductEntity;
 
 class ProductController extends Controller
 {
 
     public function listAction() {
 
-        $this->setTitle('Products');
+        $this->setTitle('Produse - Auto Parts Supply');
 
         $limit = isset($_GET['limit'])? $_GET['limit'] : 12;
         $offset = isset($_GET['offset'])? $_GET['offset'] : 0;
@@ -33,7 +34,7 @@ class ProductController extends Controller
 
     public function createAction() {
 
-        $this->setTitle('Create Product');
+        $this->setTitle('Create Product - Auto Parts Supply');
 
         $error = '';
 
@@ -95,6 +96,8 @@ class ProductController extends Controller
 
         $models = Project::getEntityManager()->getAllBy('App\Entity\ModelAutoEntity', array(
             'brand_id' => $brandId
+        ), array(
+            'orderBy' => 'name'
         ));
 
         if (empty($models)) {
@@ -104,5 +107,37 @@ class ProductController extends Controller
         foreach ($models as $model) {
             echo '<option value="'. $model->getId() .'">' . $model->getName() . '</option>';
         }
+    }
+
+    public function searchAction() {
+
+        $this->setTitle('Cautare Produse - Auto Parts Supply');
+
+        $query = isset($_GET['query'])? $_GET['query'] : null;
+
+        $products = array();
+        $error = '';
+
+        if ($query) {
+
+            $sql = 'SELECT * FROM ' . ProductEntity::getTable() . " WHERE name LIKE '%" . $query . "%'";
+            $statement = Project::getDB()->prepare($sql);
+
+            if ($statement->execute()) {
+                $products = $statement->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\ProductEntity');
+            }
+
+            if (count($products) == 0) {
+                $error = 'Nu sunt produse pentru criterile cautarii.';
+            }
+        }
+        else {
+            $error = 'Parametri cautarii nu sunt corecti.';
+        }
+
+        $this->renderTemplate('product/search.php', array(
+            'products' => $products,
+            'error' => $error
+        ));
     }
 }
