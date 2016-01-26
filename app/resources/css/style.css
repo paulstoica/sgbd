@@ -88,6 +88,7 @@
 form.search-form input {
     float: left;
     width: 160px;
+    padding: 0px 5px;
 }
 
 form.search-form button {

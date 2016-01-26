@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Lib\Controller;
 use App\Lib\Security;
 use App\Project;
@@ -10,7 +9,8 @@ use App\Project;
 class UserController extends Controller
 {
 
-    public function registerAction() {
+    public function registerAction()
+    {
 
         $this->setTitle('Inregistrare - Auto Parts Supply');
 
@@ -25,8 +25,7 @@ class UserController extends Controller
             if ($email && $name && $password && $repassword) {
                 if ($password != $repassword) {
                     $error = 'Parolele nu sunt egale.';
-                }
-                else {
+                } else {
                     $em = Project::getEntityManager();
 
                     $created = new \DateTime();
@@ -42,10 +41,11 @@ class UserController extends Controller
 
                     if (!$entity) {
                         $error = 'A fost o eroare in momentul inregistrari, te rugam incearca dinou.';
+                    } else {
+                        $this->redirectTo('security/login');
                     }
                 }
-            }
-            else {
+            } else {
                 $error = 'Introdu valori valide.';
             }
         }
@@ -54,4 +54,5 @@ class UserController extends Controller
             'error' => $error
         ));
     }
+
 }
